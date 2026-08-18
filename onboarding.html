@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ORVEX AI — Konfiguracja Profilu</title>
+  <link rel="stylesheet" href="css/auth.css"> <!-- Używamy bazy z logowania -->
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      
+      <div class="auth-header">
+        <div class="logo-box">
+          <img src="assets/logo.svg" alt="ORVEX AI Logo">
+        </div>
+        <h1>Inicjalizacja <span>Profilu</span></h1>
+        <p>Wprowadź swoje dane, aby skalibrować asystenta.</p>
+      </div>
+
+      <form id="onboarding-form">
+        <!-- Imię (Wymagane) -->
+        <div class="input-group">
+          <label for="first-name">Imię <span class="required">*</span></label>
+          <div class="input-field">
+            <i class="ri-user-line"></i>
+            <input type="text" id="first-name" placeholder="Twoje imię" required>
+          </div>
+        </div>
+
+        <!-- Nazwisko (Opcjonalne) -->
+        <div class="input-group">
+          <label for="last-name">Nazwisko <span class="optional">(Opcjonalnie)</span></label>
+          <div class="input-field">
+            <i class="ri-user-settings-line"></i>
+            <input type="text" id="last-name" placeholder="Twoje nazwisko">
+          </div>
+        </div>
+
+        <!-- Suwaki Daty Urodzenia -->
+        <div class="input-group">
+          <label>Data urodzenia <span class="required">*</span></label>
+          <div class="date-picker-container">
+            <div class="picker-overlay"></div>
+            
+            <div class="picker-column" id="day-picker">
+              <div class="picker-spacer"></div>
+              <!-- Dni wygenerowane przez JS -->
+              <div class="picker-spacer"></div>
+            </div>
+
+            <div class="picker-column" id="month-picker">
+              <div class="picker-spacer"></div>
+              <!-- Miesiące wygenerowane przez JS -->
+              <div class="picker-spacer"></div>
+            </div>
+
+            <div class="picker-column" id="year-picker">
+              <div class="picker-spacer"></div>
+              <!-- Lata wygenerowane przez JS -->
+              <div class="picker-spacer"></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">
+          <span>Zakończ konfigurację</span>
+          <i class="ri-arrow-right-line"></i>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="js/onboarding.js"></script>
+</body>
+</html>

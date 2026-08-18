@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ORVEX AI — Logowanie</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>ORVEX <span>AI</span></h1>
+        <p>Wprowadź dane dostępowe</p>
+      </div>
+
+      <!-- Logowanie Google -->
+      <button class="btn-google" id="google-login-btn">
+        <i class="ri-google-fill"></i> Kontynuuj z Google
+      </button>
+
+      <div class="divider">
+        <span>lub e-mailem</span>
+      </div>
+
+      <!-- Formularz Logowania E-mail -->
+      <form id="login-form">
+        
+        <!-- Krok 1: Wpisanie E-maila -->
+        <div id="email-step">
+          <div class="input-group">
+            <i class="ri-mail-line"></i>
+            <input type="email" id="email" placeholder="Adres e-mail" required>
+          </div>
+          <button type="submit" class="btn-primary">
+            Wyślij kod weryfikacyjny
+          </button>
+        </div>
+
+        <!-- Krok 2: Wpisanie Kodu (domyślnie ukryte) -->
+        <div id="code-step" class="hidden">
+          <p class="timer-text">Ważność kodu: <span id="timer" class="neon-text">02:00</span></p>
+          <div class="input-group">
+            <i class="ri-shield-keyhole-line"></i>
+            <input type="number" id="verification-code" placeholder="6-cyfrowy kod" maxlength="6">
+          </div>
+          <button type="button" class="btn-primary" id="verify-code-btn">
+            Zaloguj się
+          </button>
+          <button type="button" class="btn-secondary" id="back-to-email-btn">
+            Zmień e-mail
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <script src="js/auth.js"></script>
+</body>
+</html>
