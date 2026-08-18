@@ -1,0 +1,127 @@
+:root {
+  --bg-dark: #08090d;
+  --bg-card: #121622;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #9d4edd;
+  --text-main: #f0f3f8;
+  --text-muted: #838d9e;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-wrapper { width: 100%; padding: 20px; max-width: 400px; }
+
+.auth-card {
+  background: var(--bg-card);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.auth-header h1 { font-size: 2.2rem; margin-bottom: 5px; font-weight: 700; }
+.auth-header span { color: var(--neon-cyan); }
+.auth-header p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem; }
+
+/* Przycisk Google */
+.btn-google {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+.btn-google:active { transform: scale(0.98); }
+.btn-google i { font-size: 1.2rem; color: #DB4437; }
+
+/* Linia oddzielająca */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.divider span { padding: 0 10px; }
+
+/* Pola tekstowe */
+.input-group {
+  position: relative;
+  margin: 15px 0;
+}
+.input-group i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+input {
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px 14px 14px 45px;
+  border-radius: 10px;
+  color: white;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+input:focus {
+  border-color: var(--neon-cyan);
+  outline: none;
+}
+
+/* Przyciski */
+.btn-primary, .btn-secondary {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  color: #fff;
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-top: 15px;
+}
+
+/* Elementy dla weryfikacji */
+.timer-text { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; }
+.neon-text { color: var(--neon-cyan); font-weight: bold; font-family: monospace; font-size: 1.1rem; }
+.hidden { display: none !important; }

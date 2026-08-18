@@ -1,0 +1,85 @@
+.required {
+  color: var(--neon-cyan);
+}
+
+.optional {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
+/* Kontener całego "suwaka" daty */
+.date-picker-container {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.date-picker-container:focus-within {
+  border-color: var(--neon-cyan);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+/* Nakładka zaznaczająca wybrany element na środku (szkło) */
+.picker-overlay {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 40px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-neon);
+  border-bottom: 1px solid var(--border-neon);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Kolumny ze scrollowaniem */
+.picker-column {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none;  /* IE i Edge */
+  scrollbar-width: none;  /* Firefox */
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ukrycie paska przewijania w Chrome/Safari */
+.picker-column::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pojedynczy element na liście */
+.picker-item {
+  height: 40px;
+  line-height: 40px;
+  scroll-snap-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+/* Puste miejsca na górze i dole, żeby móc przewinąć skrajne elementy na środek */
+.picker-spacer {
+  height: 55px;
+}
+
+/* Aktywny stan nadawany przez JavaScript */
+.picker-item.active {
+  color: var(--neon-cyan);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
