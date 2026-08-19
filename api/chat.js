@@ -1,0 +1,52 @@
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Metoda niedozwolona' });
+  }
+
+  const { message, image } = req.body;
+
+  try {
+    const API_KEY = process.env.GEMINI_API_KEY;
+
+    if (!API_KEY) {
+       return res.status(200).json({ reply: '[DEBUG ERROR]: Brak klucza GEMINI_API_KEY w zmiennych Vercela!' });
+    }
+
+    let contents = [];
+    contents.push({
+      role: 'user',
+      parts: [
+        { text: 'Jesteś ORVEX, zaawansowaną sztuczną inteligencją o mrocznym, hakerskim klimacie. Odpowiadaj profesjonalnie i po polsku.' },
+        { text: message || 'Obraz' }
+      ]
+    });
+
+    if (image) {
+      const matches = image.match(/^data:(.+);base64,(.+)$/);
+      if (matches) {
+        contents[0].parts.push({
+          inline_data: { mime_type: matches[1], data: matches[2] }
+        });
+      }
+    }
+
+    // Zmieniamy model na najbardziej uniwersalny gemini-2.5 lub gemini-1.5
+    const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${API_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents })
+    });
+
+    const data = await apiResponse.json();
+
+    if (!apiResponse.ok) {
+       return res.status(200).json({ reply: '[GOOGLE API ERROR]: ' + (data.error?.message || JSON.stringify(data)) });
+    }
+
+    const reply = data.candidates[0].content.parts[0].text;
+    res.status(200).json({ reply: reply });
+
+  } catch (error) {
+    res.status(200).json({ reply: '[SERVER CATCH ERROR]: ' + error.message });
+  }
+}
